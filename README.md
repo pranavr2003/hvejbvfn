@@ -87,19 +87,19 @@ with script():
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-FYWG8C8GMM');
+  gtag('config', 'UA—XXXXXXXX-X');
   ''')
 ```
 This is the equivalent of:
 ```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FYWG8C8GMM"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA—XXXXXXXX-X"></script>
 
 <script>
     
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-FYWG8C8GMM');
+  gtag('config', 'UA—XXXXXXXX-X');
     
 </script>
 ```
