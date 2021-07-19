@@ -161,3 +161,60 @@ It takes in no arguments, but provides SO much to the code.
 Try running this WITHOUT `autoPrettify()` at first and see `index.html`, and then WITH it, and see `index.html` again:
 
 ```python
+title('Some title')
+head('Some header', 'h2')
+
+openBody()
+
+with div(__class='some_class') as d:
+    p('Some text that falls inside the division')
+    d.css(background_color='black')
+    
+    with section(id='some_id') as sec:
+        p('Some text within a section within a div')
+        sec.css(background_color='red')
+        
+    with bullets(ul=True, points=['foo', 'bar', 'baz']):
+        pass
+
+writeCSS('p', color='white')
+
+autoPrettify()         # --> Try without this and see index.html, then with this and have a look at index.html again
+```
+
+________________________________
+
+### Contact Us
+
+Email: brainstormyourwayin@gmail.com
+
+**Or you can contact either of us individually if you like. See our individual GitHub profiles for information**.
+
+________________________________
+
+**Open with GitPod**
+
+[![GitPod](https://www.gitpod.io/svg/media-kit/logo-dark-theme.svg)](https://gitpod.io/#https://github.com/BrainStormYourWayIn/sierra/)
+
+________________________________
+
+## License
+
+Copyright 2021 BrainStormYourWayIn
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+> Pandas (pandas)
+>
+>> Copyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team.    
+>> Copyright (c) 2011-2020, Open source contributors.
