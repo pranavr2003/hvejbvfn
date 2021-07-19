@@ -57,7 +57,7 @@ meta(name="description", content="This is some description")
 meta(name="viewport", content="width=device-width", initial_scale=1.0)
 ```
 
-Underscores are used for hyphens and Python-conficting arguments are prefixed with a double underscore.
+Underscores are used for hyphens (same applies to CSS) and Python-conficting arguments are prefixed with a double underscore.
 
 Using argument `text` inside of a function defined in `@tag` will create a tag that opens, enters text, and closes. Something like this:
 ```python
@@ -107,9 +107,22 @@ You can add fonts using `addFont()`
 ```python
 addFont("https://fonts.googleapis.com/css2?family=Roboto&display=swap")
 ```
-Once things at the start of the HTML are settled (CSS is automatically linked), begin the body of the HTML with
+Once things at the `<head>` of the HTML are settled (CSS is automatically linked), begin the body of the HTML with
 ```python
 openBody()
 # You can add any number of styling arguments to the body within openBody()
 openBody(background_color='yellowgreen', opacity='0.9')
 ```
+You can create `div` and `section` tags this way:
+```python
+with div(__class="some_class") as d:
+    p('This is a paragraph!')
+    d.css(background_color="#5886d1")
+```
+Let's break this down but-by-bit:  
+First, we start a `div` with a context manager behavior and give it an attribute `__class`, which is essentially the tag attribute `class` (remember Python-conflicting) arguments are prefixed by a double underscore.
+
+`p()` is a function, as the name suggests, to add a `<p>` tag. You can give the tag attributes with `**kwargs`, if you like.   
+`p('Hello World!', __class='p_class')` is the same as `<p class="p_class">Hello World!</p>`
+
+After the paragraph, there's a `d.css()`. This adds CSS to the `class` mentioned within `div()`. If a `class` is mentioned, CSS is added to that class as the first priority. If an `id` is mentioned, CSS is added to that `id` as a second priority. If none of both are mentioned, CSS is just added to 
