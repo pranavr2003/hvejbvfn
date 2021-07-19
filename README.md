@@ -11,7 +11,7 @@ functionalities with ease. Loops, variables, functions, libraries - you name it,
 
 Here are a few advantages of using Sierra over other Python libraries that use the DOM API:
 
-- It has out-of-the-box support for all CSS styling attributes
+- Out-of-the-box support for all CSS styling attributes for all tags
 - Display a table by simply putting in a CSV file
 - Create your own tag functions with absolute ease using `@tag` and `@CmTag`. You can decide their behavior and use them within content-managers too
 - Improvement in the arrangement look of the code and intelligent handling of tags with    
@@ -24,16 +24,14 @@ ________________________________
 ## Documentation
 
 - **Check out the [documentation of Sierra](https://brainstormyourwayin.github.io/sierra.github.io/)**
-- **Check out a [few examples](https://github.com/BrainStormYourWayIn/sierra_examples/) of its use**
-
-> It is recommended to look at the examples only after going through the documentation.
->> The examples mentioned above is a simple bare-boned book search engine created with requests, bs4, Flask and Sierra; and the documentation of Sierra, which was written with Sierra standalone 
 
 ________________________________
 
-**Install using**
+**Installation and Upgrade**
 
     pip install sierra
+    
+    pip install --upgrade sierra
     
 Starting off is pretty simple and straightforward:
 ```python
@@ -42,7 +40,7 @@ from sierra import *
 title('Hello World!')
 ```
     
-The `title()` function at the start is mandatory, since it commences the HTML and the CSS file.
+The `title()` function at the start is mandatory, since it commences the HTML and the CSS file, which is created in the working directory upon execution on the code.
 
 You can create custom tag functions with @tag and @CmTag with just three lines of code. Say you want to create a function for &lt;meta&gt;:
 ```python
@@ -102,6 +100,8 @@ This is the equivalent of:
     
 </script>
 ```
+`writeWA()` writes text entered into it into the HTML file as it is. 
+
 You can add fonts using `addFont()`
 ```python
 addFont("https://fonts.googleapis.com/css2?family=Roboto&display=swap")
@@ -124,4 +124,40 @@ First, we start a `div` with a context manager behavior and give it an attribute
 `p()` is a function, as the name suggests, to add a `<p>` tag. You can give the tag attributes with `**kwargs`, if you like.   
 `p('Hello World!', __class='p_class')` is the same as `<p class="p_class">Hello World!</p>`
 
-After the paragraph, there's a `d.css()`. This adds CSS to the `class` mentioned within `div()`. If a `class` is mentioned, CSS is added to that class as the first priority. If an `id` is mentioned, CSS is added to that `id` as a second priority. If none of both are mentioned, CSS is just added to 
+After the paragraph, there's a `d.css()`. This adds CSS to the `class` mentioned within `div()`. If a `class` is mentioned, CSS is added to that class as the first priority. If an `id` is mentioned, CSS is added to that `id` as a second priority. If none of both are mentioned, CSS is just added to `div`.
+
+The behavior of `div` shown above also applies to `section`.
+
+You can open a new tag with `Tag()`
+```python
+with Tag('some_tag', id='some_id') as t:
+    p('A paragraph in <some_tag>')
+    t.css(color='blue')
+```
+Although here, `.css()` behaves differently. It is independent of tag attributes, meaning CSS is added directly to the tag mentioned, which is `some_tag`
+
+To add CSS to a specific attribute in the tag, use `writeCSS()`
+```python
+writeCSS(tag_name, **kwargs)
+
+writeCSS("#some_id", color='blue')
+```
+This adds CSS to the `some_id`.
+
+You can add a table to the HTML page by inputting in a CSV file this way:
+```python
+with Table() as t:
+    t.get_table("path/to/file.csv")   # Add attributes with **kwargs here
+    t.css(border="1px solid black")   # Use writeCSS to add CSS to a specific attribute
+```
+There are MANY more functionalities to Sierra that you can see from the [documentation](https://brainstormyourwayin.github.io/sierra.github.io/)
+
+At the end of all development with Sierra, use
+```python
+autoPrettify()
+```
+It takes in no arguments, but provides SO much to the code.
+
+Try running this WITHOUT `autoPrettify()` at first and see `index.html`, and then WITH it, and see `index.html` again:
+
+```python
