@@ -14,11 +14,10 @@ Here are a few advantages of using Sierra over other Python libraries that use t
 - It has out-of-the-box support for all CSS styling attributes
 - Display a table by simply putting in a CSV file
 - Create your own tag functions with absolute ease using `@tag` and `@CmTag`. You can decide their behavior and use them within content-managers too
-- Create definition lists, ul/ol lists by inputting in a nested list
-- Support for all HTML tag attributes
 - Improvement in the arrangement look of the code and intelligent handling of tags with    
 `autoPrettify()` - Powered by bs4 and a feature like no other
-- Use it as a templating engine for web frameworks (Although note that jinja and Django handle this task much better)
+
+You may also use this as a templating engine, although jinja and Django's templating engine is strongly recommended over this 
 
 ________________________________
 
