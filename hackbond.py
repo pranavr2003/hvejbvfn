@@ -8,7 +8,7 @@ def yoga_centres_city(city_name = 'delhi'):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:84.0) Gecko/20100101 Firefox/84.0",
     }
 
-    page = requests.get(f'https://duckduckgo.com/html/?q=yoga+centres+in+{city_name}+justdial', headers=headers).text
+    page = requests.get(f'https://duckduckgo.com/html/?q=yoga+classes+in+{city_name}+justdial', headers=headers).text
     soup = BeautifulSoup(page, 'html.parser').find_all("a", class_="result__url", href=True)
 
     for link in soup:
